@@ -51,7 +51,7 @@ public class ShareLaneTests {
     }
 
     @Test
-    public void ZipCodeTest() {
+    public void emptyZipCodeTest() {
         // Navigate https://www.sharelane.com/
         driver.get("https://www.sharelane.com/");
         WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
