@@ -20,7 +20,7 @@ public class ShareLaneTests {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
 
     @AfterClass(alwaysRun = true)
@@ -153,5 +153,108 @@ public class ShareLaneTests {
         //Verify that user isn't created an account
         WebElement errorMessage = driver.findElement(By.className("error_message"));
         Assert.assertTrue(errorMessage.isDisplayed(), "Invalid fields");
+    }
+
+    @Test
+    public void emptyShoppingCartTest() {
+        driver.get("https://www.sharelane.com/");
+        WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
+        enterButton.click();
+        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        TestPortal.click();
+        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        AccountCreator.click();
+        WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
+        buttonCreate.click();
+        WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
+        buttonAutoLogin.click();
+        WebElement shoppingCart = driver.findElement(By.cssSelector("a[href='./shopping_cart.py']"));
+        shoppingCart.click();
+        WebElement confirmationMessage = driver.findElement(By.className("confirmation_message"));
+        Assert.assertFalse(confirmationMessage.isSelected(), "Cart should be empty");
+    }
+
+    @Test
+    public void addBookToShoppingCartTest() {
+        driver.get("https://www.sharelane.com/");
+        WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
+        enterButton.click();
+        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        TestPortal.click();
+        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        AccountCreator.click();
+        WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
+        buttonCreate.click();
+        WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
+        buttonAutoLogin.click();
+        WebElement searchInput = driver.findElement(By.name("keyword"));
+        searchInput.sendKeys("Great Expectations");
+        WebElement searchButton = driver.findElement(By.cssSelector("input[value = 'Search']"));
+        searchButton.click();
+        WebElement addButton = driver.findElement(By.cssSelector("a[href='./add_to_cart.py?book_id=1']"));
+        addButton.click();
+        WebElement confirmationMessage = driver.findElement(By.className("confirmation_message"));
+        Assert.assertTrue(confirmationMessage.isDisplayed(), "Book was added to the Shopping Cart");
+        WebElement shoppingCart = driver.findElement(By.cssSelector("a[href='./shopping_cart.py']"));
+        shoppingCart.click();
+        WebElement updateButton = driver.findElement(By.cssSelector("input[value = 'Update']"));
+        Assert.assertTrue(updateButton.isDisplayed(), "Update button should be display");
+    }
+
+    @Test
+    public void add10BooksToShoppingCartTest() {
+        driver.get("https://www.sharelane.com/");
+        WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
+        enterButton.click();
+        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        TestPortal.click();
+        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        AccountCreator.click();
+        WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
+        buttonCreate.click();
+        WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
+        buttonAutoLogin.click();
+        WebElement searchInput = driver.findElement(By.name("keyword"));
+        searchInput.sendKeys("White Fang");
+        WebElement searchButton = driver.findElement(By.cssSelector("input[value = 'Search']"));
+        searchButton.click();
+        WebElement addButton = driver.findElement(By.cssSelector("a[href='./add_to_cart.py?book_id=2']"));
+        addButton.click();
+        WebElement shoppingCart = driver.findElement(By.cssSelector("a[href='./shopping_cart.py']"));
+        shoppingCart.click();
+        WebElement quantity = driver.findElement(By.cssSelector("input[value = '1']"));
+        quantity.sendKeys("0");
+        WebElement updateButton = driver.findElement(By.cssSelector("input[value = 'Update']"));
+        updateButton.click();
+        WebElement confirmationMessage = driver.findElement(By.className("confirmation_message"));
+        Assert.assertTrue(confirmationMessage.isDisplayed(), "Cart Updated");
+    }
+
+    @Test
+    public void proceedToPageCheckoutTest (){
+        driver.get("https://www.sharelane.com/");
+        WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
+        enterButton.click();
+        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        TestPortal.click();
+        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        AccountCreator.click();
+        WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
+        buttonCreate.click();
+        WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
+        buttonAutoLogin.click();
+        WebElement searchInput = driver.findElement(By.name("keyword"));
+        searchInput.sendKeys("White Fang");
+        WebElement searchButton = driver.findElement(By.cssSelector("input[value = 'Search']"));
+        searchButton.click();
+        WebElement addButton = driver.findElement(By.cssSelector("a[href='./add_to_cart.py?book_id=2']"));
+        addButton.click();
+        WebElement shoppingCart = driver.findElement(By.cssSelector("a[href='./shopping_cart.py']"));
+        shoppingCart.click();
+        WebElement proceedToCheckoutButton = driver.findElement(By.cssSelector("input[value = 'Proceed to Checkout']"));
+        proceedToCheckoutButton.click();
+        WebElement makePaymentButton = driver.findElement(By.cssSelector("input[value = 'Make Payment']"));
+        Assert.assertTrue(makePaymentButton.isDisplayed(), "Checkout page should be display");
+
     }
 }
