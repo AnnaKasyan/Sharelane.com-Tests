@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -20,12 +21,18 @@ public class ShareLaneTests {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
     }
 
     @AfterClass(alwaysRun = true)
     public void tearDown() {
         driver.quit();
+    }
+
+    @AfterMethod
+    public void clearSession() {
+        driver.manage().deleteAllCookies();
     }
 
     @Test
@@ -160,10 +167,10 @@ public class ShareLaneTests {
         driver.get("https://www.sharelane.com/");
         WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
         enterButton.click();
-        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
-        TestPortal.click();
-        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
-        AccountCreator.click();
+        WebElement testPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        testPortal.click();
+        WebElement accountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        accountCreator.click();
         WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
         buttonCreate.click();
         WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
@@ -179,10 +186,10 @@ public class ShareLaneTests {
         driver.get("https://www.sharelane.com/");
         WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
         enterButton.click();
-        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
-        TestPortal.click();
-        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
-        AccountCreator.click();
+        WebElement testPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        testPortal.click();
+        WebElement accountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        accountCreator.click();
         WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
         buttonCreate.click();
         WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
@@ -201,7 +208,7 @@ public class ShareLaneTests {
         updateButton.click();
         //Assert
         WebElement bookTitle = driver.findElement(By.xpath("//table[@align='center']/tbody/tr[2]/td[2]"));
-        Assert.assertEquals(bookTitle.getText(),"Great Expectations");
+        Assert.assertEquals(bookTitle.getText(), "Great Expectations");
     }
 
     @Test
@@ -209,10 +216,10 @@ public class ShareLaneTests {
         driver.get("https://www.sharelane.com/");
         WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
         enterButton.click();
-        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
-        TestPortal.click();
-        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
-        AccountCreator.click();
+        WebElement testPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        testPortal.click();
+        WebElement accountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        accountCreator.click();
         WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
         buttonCreate.click();
         WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
@@ -230,19 +237,19 @@ public class ShareLaneTests {
         WebElement updateButton = driver.findElement(By.cssSelector("input[value = 'Update']"));
         updateButton.click();
         //Assert
-//        WebElement quantityAfterUpdate = driver.findElement(By.xpath("//table[@align='center']/tbody/tr[2]/td[3]"));
-//        Assert.assertEquals(quantityAfterUpdate.getText(),"10");
+        quantity = driver.findElement(By.name("q"));
+        Assert.assertEquals(quantity.getAttribute("value"),"10");
     }
 
     @Test
-    public void proceedToPageCheckoutTest (){
+    public void proceedToPageCheckoutTest() {
         driver.get("https://www.sharelane.com/");
         WebElement enterButton = driver.findElement(By.cssSelector("a[href='../cgi-bin/main.py']"));
         enterButton.click();
-        WebElement TestPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
-        TestPortal.click();
-        WebElement AccountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
-        AccountCreator.click();
+        WebElement testPortal = driver.findElement(By.cssSelector("a[href='../test_portal.html']"));
+        testPortal.click();
+        WebElement accountCreator = driver.findElement(By.cssSelector("a[href='../cgi-bin/create_account.py']"));
+        accountCreator.click();
         WebElement buttonCreate = driver.findElement(By.cssSelector("input[value = 'Create new user account']"));
         buttonCreate.click();
         WebElement buttonAutoLogin = driver.findElement(By.cssSelector("input[value = 'Auto Login']"));
