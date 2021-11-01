@@ -1,0 +1,69 @@
+package theInternetHerokuappTests;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
+public class Hovers {
+
+    private WebDriver driver;
+
+    @BeforeClass(alwaysRun = true)
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+    }
+
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
+        driver.quit();
+    }
+
+
+    @Test
+    public void hoversTest () {
+        Actions builder = new Actions(driver);
+
+        driver.get("http://the-internet.herokuapp.com/hovers");
+        WebElement user1 = driver.findElement(By.xpath("//descendant::div[@class='figure'][1]"));
+        builder.moveToElement(user1).build().perform();
+        WebElement user1Name = driver.findElement(By.xpath("//h5[text()='name: user1']"));
+        Assert.assertTrue(user1Name.isDisplayed());
+        WebElement link1 = driver.findElement(By.cssSelector("a[href='/users/1']"));
+        link1.click();
+        WebElement verifyPage = driver.findElement(By.xpath("//h1[text()='Not Found']"));
+        Assert.assertTrue(verifyPage.isDisplayed());
+
+        driver.get("http://the-internet.herokuapp.com/hovers");
+        WebElement user2 = driver.findElement(By.xpath("//descendant::div[@class='figure'][2]"));
+        builder.moveToElement(user2).build().perform();
+        WebElement user2Name = driver.findElement(By.xpath("//h5[text()='name: user2']"));
+        Assert.assertTrue(user2Name.isDisplayed());
+        WebElement link2 = driver.findElement(By.cssSelector("a[href='/users/1']"));
+        link2.click();
+        verifyPage = driver.findElement(By.xpath("//h1[text()='Not Found']"));
+        Assert.assertTrue(verifyPage.isDisplayed());
+
+        driver.get("http://the-internet.herokuapp.com/hovers");
+        WebElement user3 = driver.findElement(By.xpath("//descendant::div[@class='figure'][2]"));
+        builder.moveToElement(user3).build().perform();
+        WebElement user3Name = driver.findElement(By.xpath("//h5[text()='name: user3']"));
+        Assert.assertTrue(user3Name.isDisplayed());
+        WebElement link3 = driver.findElement(By.cssSelector("a[href='/users/1']"));
+        link3.click();
+        verifyPage = driver.findElement(By.xpath("//h1[text()='Not Found']"));
+        Assert.assertTrue(verifyPage.isDisplayed());
+    }
+}
