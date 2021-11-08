@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+</head>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #FF6781;
+}
+
+.button1:hover {
+  background-color: #FF6781;
+  color: white;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+
+</style>
+<body>
+
+<h2> HTML table</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>№</th>
+        <th>Person</th>
+        <th>Country</th>
+        <th>Phone Number</th>
+        <th>Order Number</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Maria Anders</td>
+        <td>Germany</td>
+        <td>+7 10 499604879</td>
+        <td>8562</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+        <td>+7 10 522122086</td>
+        <td>3258</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Christian Mayer</td>
+        <td>Austria</td>
+        <td> +43 1 2252516</td>
+        <td>9874</td>
+    </tr>
+</table>
+
+<p>Table of fictional buyers of something.</p><br>
+
+<h2>Password field</h2>
+
+<p><strong>Log in</strong> dto make changes.</p>
+
+<form>
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="pwd">Password:</label><br>
+    <input type="password" id="pwd" name="pwd"><br><br>
+    <input type="reset"><br><br><br>
+</form>
+
+<h2>Checkboxes</h2>
+<p>How do you like to spend your free time? <strong>Check</strong> he appropriate option.</p>
+
+<form>
+    <input type="checkbox" id="hobby1" name="hobby1" value="music">
+    <label for="hobby1"> I like to listen to music</label><br>
+    <input type="checkbox" id="hobby2" name="hobby" value="books">
+    <label for="hobby2"> I like to read books</label><br>
+    <input type="checkbox" id="hobby3" name="hobby" value="sport">
+    <label for="hobby2"> I like sport</label><br>
+    <input type="checkbox" id="hobby4" name="hobby" value="movies">
+    <label for="hobby2"> I like to watch movies</label><br>
+    <input type="checkbox" id="hobby5" name="hobby3" value="friends">
+    <label for="hobby3"> I like to spend time with friends</label><br><br><br>
+</form>
+
+<h2>Radio Buttons</h2>
+
+<p>Choose your favorite season:</p>
+<form>
+      <input type="radio" id="spring" name="fav_season" value="spring">
+      <label for="spring">spring</label><br>
+      <input type="radio" id="summer" name="fav_season" value="summer">
+      <label for="summer">summer</label><br>
+      <input type="radio" id="autumn" name="fav_season" value="autumn">
+      <label for="autumn">autumn</label><br>
+      <input type="radio" id="winter" name="fav_season" value="winter">
+      <label for="winter">winter</label><br><br><br>
+</form>
+
+<h1>The select element</h1>
+
+<p>To make an appointment for a massage, choose a time convenient for you.</p>
+
+<form>
+    <label for="time">Choose a time:</label>
+    <select name="time" id="time">
+        <optgroup label="AM">
+            <option value="9">9:00</option>
+            <option value="10">10:00</option>
+            <option value="11">11:00</option>
+        </optgroup>
+        <optgroup label="PM">
+            <option value="12">12:00</option>
+            <option value="1">1:00</option>
+            <option value="2">2:00</option>
+            <option value="3">3:00</option>
+            <option value="4">4:00</option>
+            <option value="5">5:00</option>
+            <option value="6">6:00</option>
+        </optgroup>
+    </select>
+    <br><br><br>
+</form>
+
+<h1>The button element - Styled with CSS</h1>
+
+<p><strong>Click on the button</strong> and find out how many percent of men on earth or women!</p>
+
+<button class="button button1" onclick="alert('Female population 49.5%')">Women</button>
+<button class="button button2" onclick="alert('Male population 50.5%')">Men</button>
+<br><br><br>
+
+<h1>Add hyperlink to images</h1>
+
+<p>Click on the painting you like and find out more about the artist!</p>
+
+<p><a href="https://tftwiki.ru/wiki/Modesto_Brocos">
+    <img src="https://static.kulturologia.ru/files/u18214/RomanticPaintingsofLovers7.jpg" alt="tftwiki.ru" width="250"
+         height="300">
+</a>
+
+    <a href="https://losko.ru/rene-magritte/">
+        <img src="https://static.kulturologia.ru/files/u18214/RomanticPaintingsofLovers2.jpg" alt="losko.ru" width="300"
+             height="300">
+    </a></p>
+
+
+<p>
+    <a href="https://artifex.ru/%D0%B6%D0%B8%D0%B2%D0%BE%D0%BF%D0%B8%D1%81%D1%8C/%D1%81%D1%83%D0%B4%D0%B7%D1%83%D0%BA%D0%B8-%D1%85%D0%B0%D1%80%D1%83%D0%BD%D0%BE%D0%B1%D1%83-%D1%83%D0%BA%D0%B8%D1%91-%D1%8D/">
+        <img src="https://static.kulturologia.ru/files/u18214/RomanticPaintingsofLovers3.jpg" alt="artifex.ru"
+             width="250" height="300">
+    </a>
+
+    <a href="https://24smi.org/celebrity/40343-gustav-klimt.html">
+        <img src="https://static.kulturologia.ru/files/u18214/RomanticPaintingsofLovers.jpg" alt="24smi.org" width="300"
+             height="300">
+    </a></p><br><br><br>
+
+<div class="poem">
+<h1>The p element</h1>
+
+<p style="text-align:center"><strong>Hope is The Thing with Feathers.</strong></p>
+
+<p>"Hope" is the thing with feathers—</p>
+<p>That perches in the soul—</p>
+<p>And sings the tune without the words—</p>
+<p>And never stops—at all—</p><br>
+
+<p>And sweetest—in the Gale—is heard—</p>
+<p>And sore must be the storm—</p>
+<p>That could abash the little Bird</p>
+<p>That kept so many warm—</p>
+<p>I've heard it in the chillest land—</p>
+<p>And on the strangest Sea—</p>
+<p>Yet, never, in Extremity,</p>
+<p>It asked a crumb—of Me.</p>
+
+<p style="text-align:right">By Emily Dickinson</p><br><br><br>
+    </div>
+
+<h1>The a element</h1>
+
+<p style="text-align:center"><strong>Present Tenses</strong></p>
+
+<p><a href="#tens1">Go to Simple Present</a></p>
+<p><a href="#tens2">Go to Present Perfect</a></p>
+<p><a href="#tens3">Go to Present Continuous</a></p>
+<p><a href="#tens4">Go to Present Perfect Continuous</a></p>
+
+<h2 id="tens1">Simple Present</h2>
+<p>The simple present is a verb tense with two main uses. We use the simple present tense when an action is happening
+    right now, or when it happens regularly (or unceasingly, which is why it’s sometimes called present indefinite).
+    Depending on the person, the simple present tense is formed by using the root form or by adding ‑s or ‑es to the
+    end.</p>
+
+<h3 id="tens2">Present Perfect</h3>
+<p>The present perfect tense refers to an action or state that either occurred at an indefinite time in the past (e.g.,
+    we have talked before) or began in the past and continued to the present time (e.g., he has grown impatient over the
+    last hour). This tense is formed by have/has + the past participle.</p>
+
+<p>The construction of this verb tense is straightforward. The first element is have or has, depending on the subject
+    the verb is conjugated with. The second element is the past participle of the verb, which is usually formed by
+    adding -ed or -d to the verb’s root (e.g., walked, cleaned, typed, perambulated, jumped, laughed, sautéed) although
+    English does have quite a few verbs that have irregular past participles (e.g., done, said, gone, known, won,
+    thought, felt, eaten).</p>
+
+<h3 id="tens3">Present Continuous</h3>
+<p>The present continuous verb tense indicates that an action or condition is happening now, frequently, and may
+    continue into the future.</p>
+
+<p>The Present Continuous Formula: to be [am, is, are] + verb [present participle]</p>
+
+<h3 id="tens4">Present Perfect Continuous</h3>
+<p>The present perfect continuous tense (also known as the present perfect progressive tense) shows that something
+    started in the past and is continuing at the present time. The present perfect continuous is formed using the
+    construction has/have been + the present participle (root + -ing).</p>
+
+</body>
+</html>
