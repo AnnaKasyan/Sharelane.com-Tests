@@ -8,7 +8,7 @@ import tests.BaseTest;
 
 import java.util.List;
 
-public class SortableDataTables extends BaseTest {
+public class SortableDataTablesTest extends BaseTest {
 
     @Test
     public void sortableDataTablesTest() {

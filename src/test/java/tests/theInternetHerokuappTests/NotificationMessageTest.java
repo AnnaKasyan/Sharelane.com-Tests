@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-public class NotificationMessage extends BaseTest {
+public class NotificationMessageTest extends BaseTest {
 
     @Test
     public void notificationMessageTest() {
