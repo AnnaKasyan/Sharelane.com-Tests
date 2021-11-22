@@ -9,7 +9,7 @@ import tests.BaseTest;
 
 import java.util.List;
 
-public class Dropdown extends BaseTest {
+public class DropdownTest extends BaseTest {
 
     @Test
     public void dropdownTest() {

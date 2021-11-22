@@ -8,7 +8,7 @@ import tests.BaseTest;
 
 import java.util.List;
 
-public class Checkboxes extends BaseTest {
+public class CheckboxesTest extends BaseTest {
 
     @Test
     public void checkboxesTest() {

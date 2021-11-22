@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-public class Inputs extends BaseTest {
+public class InputsTest extends BaseTest {
     private WebElement inputField;
 
     @BeforeMethod

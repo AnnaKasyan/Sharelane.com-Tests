@@ -8,7 +8,7 @@ import tests.BaseTest;
 
 import java.util.List;
 
-public class AddRemoveElements extends BaseTest {
+public class AddRemoveElementsTest extends BaseTest {
 
     @Test
     public void addRemoveElementsTest() {

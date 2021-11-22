@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-public class Typos extends BaseTest {
+public class TyposTest extends BaseTest {
 
     @Test
     public void typosTest() {

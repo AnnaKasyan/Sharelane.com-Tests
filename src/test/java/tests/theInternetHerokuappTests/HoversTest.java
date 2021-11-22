@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import tests.BaseTest;
 
-public class Hovers extends BaseTest {
+public class HoversTest extends BaseTest {
 
     @Test
     public void hoversTest () {
